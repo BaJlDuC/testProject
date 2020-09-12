@@ -1,0 +1,82 @@
+html {
+    font-family: Calibri;
+}
+
+.main
+{
+    float: right;
+    margin-right: 5%;
+}
+
+.helloMessage
+{
+    margin-left: 30%;
+    margin-right: 25%;
+    font-size: 30px;
+}
+
+.userName
+{
+    margin-left: 60px;
+}
+
+.logout
+{
+    margin-left: 60px;
+    margin-bottom: 0px;
+    margin-top: -5px
+}
+
+.checkListItems
+{
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 5%;
+}
+
+.checkListItemName
+{
+    margin-bottom: 0px;
+    font-size: 26px;
+}
+
+.checkListItemDescription
+{
+    margin-top: 5px;
+    margin-left: 5px;
+    font-style: italic;
+}
+
+.moreInfo
+{
+    float: right;
+    margin-right: 5%;
+}
+
+.checkBoxItem
+{
+    background: cadetblue;
+}
+
+.checkListBanner
+{
+    margin-left: 33%;
+    margin-right: 30%;
+}
+
+.checkBoxList
+{
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+.underCheckBoxes
+{
+    margin-left: 5%;
+    margin-top: 2%;
+}
+
+.photo
+{
+    float: left;
+}
