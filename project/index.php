@@ -1,9 +1,11 @@
 <html>
 <head>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/loadInfo.js"></script>
 <title>Главная</title>
 <h2 class="main">Главная</h2>
     <link rel="stylesheet" href="css/style.css" media="all">
-        </head>
+</head>
 <body>
 <?php
 require 'dbFunctions.php';
@@ -22,16 +24,8 @@ if (isset($_SESSION['userInfo']))
     else {
         //-------здесь возможно нужна проверка существования пользователя в бд
         $userIdFromVk = $_SESSION['userInfo']['id'];
+        echo '<script type="text/javascript">LoadInfo(' . $userIdFromVk . ');</script>';
 
-        if (IsUserExistInDataBase($userIdFromVk))
-        {
-            echo 'exist, updating data from user...';
-        }
-        else
-        {
-            echo 'does not exist, adding user in db...';
-            AddUserInDataBase($userIdFromVk);
-        }
         require_once 'content.php';
     }
 }

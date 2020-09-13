@@ -38,5 +38,6 @@ if (isset($_GET['code'])) {
     }
 
     $_SESSION['userInfo'] = $userInfo;
+
     header('Location: index.php');
 }

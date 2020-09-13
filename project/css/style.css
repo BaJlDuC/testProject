@@ -80,3 +80,9 @@ html {
 {
     float: left;
 }
+
+.loading
+{
+    margin-left: 33%;
+    font-size: 30px;
+}

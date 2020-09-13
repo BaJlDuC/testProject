@@ -69,3 +69,49 @@ ADD CONSTRAINT `2fk$id`
   ON UPDATE CASCADE";
     $link->multi_query($query);
 }
+
+function UpdateUserInDataBase($id)
+{
+    $link = ConnectDataBase()
+    or die("Не удалось подключиться к базе данных " . mysqli_error($link));
+    $query = "SELECT * FROM checkBoxUnderCheckBox";
+    $result = $link->query($query);
+
+    $sourceDataUnderCheckBox = mysqli_num_rows($result);
+    $sourceDataCheckBox = mysqli_num_rows($link->query("SELECT * FROM checkBox"));
+    $sourceDataCheckList = mysqli_num_rows($link->query("SELECT * FROM checkListItem"));
+
+    $query = "SELECT * FROM checkBoxUnderCheckBox$id";
+    $currentDataUnderCheckBox = mysqli_num_rows($link->query($query));
+    $query = "SELECT * FROM checkBox$id";
+    $currentDataCheckBox = mysqli_num_rows($link->query($query));
+    $query = "SELECT * FROM checkListItem$id";
+    $currentDataCheckList = mysqli_num_rows($link->query($query));
+
+    //продолжу
+
+    if ($currentDataUnderCheckBox != $sourceDataUnderCheckBox) {
+        echo 'update under checkBox';
+        $query = "DELETE FROM checkBoxUnderCheckBox$id WHERE id_checkBoxUnderCheckBox$id <= $currentDataUnderCheckBox; INSERT INTO checkBoxUnderCheckBox$id
+SELECT *
+FROM checkBoxUnderCheckBox";
+        $link->multi_query($query);
+    }
+    else if ($currentDataCheckBox != $sourceDataCheckBox) {
+        echo 'checkbox update';
+        $query = "DELETE FROM checkBox$id WHERE id_checkBox$id <= $currentDataCheckBox; INSERT INTO checkBox$id
+SELECT *
+FROM checkBox";
+        $link->multi_query($query);
+    }
+    else if ($currentDataCheckList != $sourceDataCheckList) {
+        $query = "DELETE FROM checkListItem$id WHERE id_checkListItem$id <= $currentDataCheckList; INSERT INTO checkListItem$id
+SELECT *
+FROM checkListItem";
+        $link->multi_query($query);
+    }
+    else
+    {
+        echo 'nothing update';
+    }
+}
